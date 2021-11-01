@@ -11,8 +11,8 @@ def main():
 def midi_output():
     try:
         outputs = mido.get_output_names()
-        for b in outputs:
-            print(f'{outputs.index(b)} {b}')
+        for x in outputs:
+            print(f'{outputs.index(x)} {x}')
         select_output = input('Select midi output (#): ')
         return outputs[int(select_output)]
     except:
@@ -22,19 +22,19 @@ def midi_output():
 # Opens GUI window to choose .syx file, sends file to chosen midi device
 def send_sysex(output):
     port = mido.open_output(output)
-    c = 0
-    while c < 1:
+    y = 0
+    while y < 1:
         select_sysex = askopenfilename()
         try:
             if select_sysex.split('.')[1] != 'syx':
                 print('Please choose a sysex file (.syx)')
             else:
-                c = 1
+                y = 1
         except:
             quit()
     sysex = mido.read_syx_file(select_sysex)
-    for d in sysex:
-        port.send(d)
+    for z in sysex:
+        port.send(z)
 
 if __name__ == '__main__':
     main()
